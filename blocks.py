@@ -71,13 +71,13 @@ class Blocks:
             self.rect3.y = self.y + 40
             self.rect4.x = self.x + 40
             self.rect4.y = self.y + 40
-            self.color = (255,255,128)
+            self.color = (255,0,255)
         elif self.random == 6: #J block
             self.rect2.x = self.x + 40
             self.rect3.x = self.x + 80
             self.rect4.x = self.x + 80
             self.rect4.y = self.y + 40
-            self.color = (128,64,64)
+            self.color = (100,0,0)
 
 
     def rotate(self,blocks,width,height):
