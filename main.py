@@ -120,12 +120,21 @@ class Tetris:
                 elif event.key == pygame.K_p: 
                     if self.speed < 0.3:                   
                         self.speed+=0.01
-                    pass
                 elif event.key == pygame.K_m:
                     if self.speed > 0.05:
                         self.speed-=0.01
-                    pass
+                elif event.key == pygame.K_r:
+                    self.restart()
+
+    def restart(self):
+        self.points = 0
+        self.counter = 0
+        self.blocks = []
+        self.running = True
+        self.random = random.randint(0,6)
+        self.refresh()                
     
+
     def refresh(self):
             self.screen.fill(self.background)
             pygame.draw.line(self.screen, (255,255,255), (600,0), (600,800), 5)
@@ -195,20 +204,15 @@ class Tetris:
                                 self.running = False
                                 return
                             elif event.key == pygame.K_r:
-                                self.points = 0
-                                self.counter = 0
-                                self.blocks = []
-                                self.running = True
-                                self.random = random.randint(0,6)
-                                self.refresh()
+                                self.restart()
                                 loop = False
 
             if(self.checkCollision()==True or self.counter == 0):
                 if self.counter != 0:
-                    self.points += 1               
+                    self.points += 1            
                 self.randompos = random.randint(0,11)*40+1
                 self.blocks.append(Blocks(self.screen, self.randompos, 1, self.random))
-                self.random = random.randint(1,6)                
+                self.random = random.randint(1,7)                
                 self.counter += 1
             
             #print(self.blocks[self.counter-1].rects[0].x, self.blocks[self.counter-1].rects[0].y)   
