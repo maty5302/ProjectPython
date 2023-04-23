@@ -142,7 +142,7 @@ class Tetris:
             self.nexttext = self.font.render("Next:", True, (255,255,255))
             self.speedtext = self.font.render("Speed: " + str(round(self.speed*20,2)), True, (255,255,255))
             highscoretext = self.font.render("Highest score: " + str(self.highscore), True, (255,255,255))
-            self.screen.blit(highscoretext, (625, 100))
+            self.screen.blit(highscoretext, (605, 100))
             self.nextBlock = Blocks(self.screen, 625, 300, self.random)
             self.nextBlock.draw()
             self.screen.blit(self.nexttext, (650, 250))
@@ -207,13 +207,12 @@ class Tetris:
                                 self.restart()
                                 loop = False
 
-            if(self.checkCollision()==True or self.counter == 0):
-                if self.counter != 0:
-                    self.points += 1            
+            if(self.checkCollision()==True or self.counter == 0):          
                 self.randompos = random.randint(0,11)*40+1
                 self.blocks.append(Blocks(self.screen, self.randompos, 1, self.random))
-                self.random = random.randint(1,7)                
-                self.counter += 1
+                self.random = random.randint(1,7) 
+                self.counter += 1               
+               
             
             #print(self.blocks[self.counter-1].rects[0].x, self.blocks[self.counter-1].rects[0].y)   
 

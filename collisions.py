@@ -13,7 +13,7 @@ class Collision:
                         if k.colliderect(l):
                             return True
         for m in i.rects:
-            if m.x < 40 or m.x > width or m.y > height:
+            if m.x < 0 or m.x > width or m.y > height or m.y < 40:
                 return True
         return False
 
