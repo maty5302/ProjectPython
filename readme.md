@@ -4,7 +4,15 @@ Instalace potřebných balíčků do python prostředí
 ```
 $ pip install -r requirements.txt
 ```
+Popřípádě vytvoření virtuálního prostředí a instalace do něj
+```
+$ python3 -m venv venv/vm          # Vytvoří virtuální prostředí 
+$ source venv/vm/bin/activate      # Aktivuje prostředí
+(vm) $ pip install -r requirements.txt # Instalace do prostředí
+```
+
 ## Spuštění
+Ve složce se soubory spustit:
 ```
 python main.py
 ```
