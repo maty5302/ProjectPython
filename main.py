@@ -209,7 +209,7 @@ class Tetris:
 
             if(self.checkCollision()==True or self.counter == 0):          
                 self.randompos = random.randint(0,11)*40+1
-                self.blocks.append(Blocks(self.screen, 441, 1, self.random))
+                self.blocks.append(Blocks(self.screen, self.randompos, 1, self.random))
                 self.random = random.randint(1,7) 
                 self.counter += 1               
                
