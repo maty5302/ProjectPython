@@ -57,7 +57,7 @@ class Collision:
                 k.x = k.x + 40
         return False
     
-    def checkCollisionsRight(blocks, count) -> bool:
+    def checkCollisionsRight(blocks, count,width) -> bool:
         if blocks == []:
             return False
         i = blocks[count]
@@ -70,4 +70,7 @@ class Collision:
                             l.x = l.x - 40
                             return True
                         l.x = l.x - 40
+        for m in i.rects:
+            if m.x + 40 > width:
+                return True
         return False

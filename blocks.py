@@ -81,6 +81,7 @@ class Blocks:
 
 
     def rotate(self,blocks,width,height):
+        
         temp = copy.deepcopy(self.rects)
         self.degrees += 90
         if self.degrees == 360:

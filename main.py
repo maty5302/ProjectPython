@@ -5,7 +5,7 @@ from collisions import Collision
 
 class Tetris:
     def checkCollision(self) -> bool:
-        return Collision.checkCollisionsDown(self.blocks, self.counter-1, self.width,self.height)
+        return Collision.checkCollisionsDown(self.blocks, self.counter-1, self.playgroundwidth,self.height)
 
     def checkemptyBlocks(self):
         for i in self.blocks:
@@ -103,7 +103,7 @@ class Tetris:
                         self.blocks[self.counter-1].move(-40,0)
                         self.refresh()
                 elif event.key == pygame.K_RIGHT:
-                    ret = Collision.checkCollisionsRight(self.blocks, self.counter-1)
+                    ret = Collision.checkCollisionsRight(self.blocks, self.counter-1,self.playgroundwidth)
                     if not ret:
                         self.blocks[self.counter-1].move(40,0)
                         self.refresh()
@@ -113,7 +113,7 @@ class Tetris:
                         self.blocks[self.counter-1].move(0,40)
                         self.refresh()
                 elif event.key == pygame.K_UP:
-                    self.blocks[self.counter-1].rotate(self.blocks,self.width,self.height)
+                    self.blocks[self.counter-1].rotate(self.blocks,self.playgroundwidth,self.height)
                     pass
                 elif event.key == pygame.K_SPACE:
                     self.tobottom()
@@ -153,9 +153,8 @@ class Tetris:
                 for i in self.blocks:
                     i.draw()
             pygame.display.flip()    
-    def playground(self):
-        width = self.width/2*1.5
-        width = int(width)
+    def playground(self):        
+        width = int(self.playgroundwidth)
         for i in range(0, width, 40):
             pygame.draw.line(self.screen, (255,255,255), (i,0), (i,800), 1)
         for i in range(0, self.height, 40):
@@ -169,6 +168,7 @@ class Tetris:
         self.random = 0
         self.blocks = []
         self.width = 800
+        self.playgroundwidth = self.width/2*1.5
         self.height = 800
         self.background = (0,0,0)
         self.clock = pygame.time.Clock()
@@ -209,7 +209,7 @@ class Tetris:
 
             if(self.checkCollision()==True or self.counter == 0):          
                 self.randompos = random.randint(0,11)*40+1
-                self.blocks.append(Blocks(self.screen, self.randompos, 1, self.random))
+                self.blocks.append(Blocks(self.screen, 441, 1, self.random))
                 self.random = random.randint(1,7) 
                 self.counter += 1               
                
